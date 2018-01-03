@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {Text, View} from 'react-native';
 import * as firebase from 'firebase';
 
 import { firebaseConfig } from './settings';
@@ -19,17 +18,19 @@ class App extends Component {
         firebaseApp = firebase.initializeApp(firebaseConfig);
     }
 
+    
     render() {
-        return (
-            <Login />
-        )
+        if (this.props.isLoggedIn) {
+            console.log('Tu est connecté bravo');
+        } else {
+            return <Login />;
+        }
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        state
-        //isLoggedIn: state.auth.isLoggedIn
+        isLoggedIn: state.Auth.isLoggedIn
     };
 }
 
