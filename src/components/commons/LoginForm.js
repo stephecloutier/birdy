@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {View, Button, Text} from 'react-native';
 import Field from './Field';
 
-import * as actions from '../../actions/auth';
+import {login} from '../../actions/auth';
 
 class Form extends Component {
     onButtonPress(){
-        //this.props.logIn();
+        this.props.loginUser();
     }
+
     render() {
         return(
             <View>
@@ -43,5 +44,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-//export {Form};
-export default connect(mapStateToProps, actions)(Form);
+export default connect(mapStateToProps)(Form);

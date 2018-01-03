@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
-import Form from './commons/Form';
+import LoginForm from './commons/LoginForm';
 import Header from './commons/Header';
 
 
@@ -9,7 +9,7 @@ class Login extends Component {
         return(
             <View>
                 <Header headerText={'Birdy'} />
-                <Form />
+                <LoginForm />
             </View>
         )
     }
