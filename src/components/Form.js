@@ -6,6 +6,7 @@ class Form extends Component {
     render() {
         return(
             <View>
+                <Text> Authentification </Text>
                 <Field
                     label='Email'
                     placeholder='johndoe@birdy.be'

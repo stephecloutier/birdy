@@ -9,6 +9,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
 import {Form} from './src/components/Form';
+import {Header} from './src/components/Header'
 import reducers from './src/reducers'
 
 
@@ -17,9 +18,7 @@ export default class App extends Component {
         return (
             <Provider store={createStore(reducers)}>
                 <View style={styles.container}>
-                    <Text>
-                        Birdy
-                    </Text>
+                    <Header headerText={'Birdy'} />
                     <Form />
                 </View>
             </Provider>
