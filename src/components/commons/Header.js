@@ -7,12 +7,16 @@ const Header = (props) => {
             <Text>
                 {props.headerText}
             </Text>
-            <Button
-                title='Encyclopédie'>
-            </Button>
         </View>
     )
 }
 
 //export {Header};
 export default Header;
+
+/*
+<Button
+                title='Encyclopédie'
+                onPress={console.log('lien vers l\'encyclopédie')}>
+            </Button>
+            */

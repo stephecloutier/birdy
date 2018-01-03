@@ -6,8 +6,15 @@ import Field from './Field';
 import {loginUser} from '../../actions/auth';
 
 class LoginForm extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {}; 
+    }
+
+
     onButtonPress(){
-        this.props.loginUser();
+        this.props.loginUser(this.props.auth.email, this.props.auth.password);
     }
 
     render() {
@@ -19,12 +26,17 @@ class LoginForm extends Component {
                 <Field
                     label='Email'
                     placeholder='johndoe@birdy.be'
-                    /*value={this.state.email}*/
+                    value={this.props.email}
+                    onChangeText={(text) => {
+                        this.props.auth.email = text;
+                    }}
+
                 />
                 <Field
                     secureTextEntry
                     label='Mot de passe'
-                    /*value={this.state.password}*/
+                    value={this.props.password}
+                    onChangeText={text => this.props.auth.password = text}
                 />
                 <View>
                     <Button
@@ -36,13 +48,13 @@ class LoginForm extends Component {
         )
     }
 }
-
+/*
 const mapStateToProps = (state) => {
     return {
         email: state.email,
         password: state.password,
     }
-}
+}*/
 
 /*
 const mapDispatchToProps = (dispatch) => {
@@ -52,4 +64,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 */
 
+function mapStateToProps(state) {
+    return state;
+}
+
 export default connect(mapStateToProps, {loginUser})(LoginForm);
+// export default connect(mapStateToProps, {loginUser})(LoginForm);

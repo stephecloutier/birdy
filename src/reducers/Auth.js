@@ -8,9 +8,11 @@ const defaultState = {
 const auth = (state = defaultState, action) => {
     switch(action.type) {
         case 'LOGIN':
+            console.log(action);
             const { user: { uid: userId} } = action;
             return { ...state, loggedIn: true, userId }
         case 'LOGIN_HAS_FAILED':
+            console.error('erreur lors de l\'authentification');
             const { error } = action;
             return { ...state, loggedIn: false, error }
         default:
