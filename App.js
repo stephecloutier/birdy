@@ -5,32 +5,32 @@
  */
 
 import React, { Component } from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import { Provider } from 'react-redux';
-import {createStore} from 'redux';
-import {Form} from './src/components/Form';
-import {Header} from './src/components/Header'
-import reducers from './src/reducers'
+import {connect} from 'react-redux'
+import {Text, View} from 'react-native';
+import * as firebase from 'firebase';
 
+import { firebaseConfig } from './settings';
+import Login from './src/components/Login';
 
-export default class App extends Component {
+let firebaseApp;
+
+class App extends Component {
+    componentDidMount() {
+        firebaseApp = firebase.initializeApp(firebaseConfig);
+    }
+
     render() {
         return (
-            <Provider store={createStore(reducers)}>
-                <View style={styles.container}>
-                    <Header headerText={'Birdy'} />
-                    <Form />
-                </View>
-            </Provider>
-        );
+            <Login />
+        )
     }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
+const mapStateToProps = (state, ownProps) => {
+    return {
+        state
+        //isLoggedIn: state.auth.isLoggedIn
+    };
+}
+
+export default connect(mapStateToProps)(App);
