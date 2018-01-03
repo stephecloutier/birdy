@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import * as firebase from 'firebase';
 
-import { firebaseConfig } from './settings';
+import firebaseConfig from './settings';
 import Login from './src/components/Login';
 
 let firebaseApp;
@@ -30,7 +30,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.Auth.isLoggedIn
+        isLoggedIn: state.auth.isLoggedIn
     };
 }
 

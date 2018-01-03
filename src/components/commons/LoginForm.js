@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {View, Button, Text} from 'react-native';
 import Field from './Field';
 
-import {login} from '../../actions/auth';
+import {loginUser} from '../../actions/auth';
 
-class Form extends Component {
+class LoginForm extends Component {
     onButtonPress(){
         this.props.loginUser();
     }
@@ -44,4 +44,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Form);
+/*
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: (url) => dispatch(itemsFetchData(url))
+    };
+};
+*/
+
+export default connect(mapStateToProps, {loginUser})(LoginForm);
