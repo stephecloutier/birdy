@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {View, Button, Text} from 'react-native';
-import Field from './commons/Field';
-import Error from './commones/Error';
+import Field from './Field';
+import Error from './Error';
 
 
-import {createUser} from '../../actions/register';
+//import {createUser} from '../../actions/register';
 
 class RegisterForm extends Component {
 
@@ -73,4 +73,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, {createUser})(RegisterForm);
+export default connect(mapStateToProps)(RegisterForm);

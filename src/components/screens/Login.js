@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Button} from 'react-native';
-import LoginForm from './commons/LoginForm';
-import Header from './commons/Header';
+import LoginForm from '../commons/LoginForm';
+import Header from '../commons/Header';
 
 
 class Login extends Component {
-    toRegister(){
-        ;
-    }
-
     render() {
         return(
             <View>
@@ -16,7 +12,7 @@ class Login extends Component {
                 <LoginForm formText={'Authentification'} />
                 <Button
                     title='Créer un compte'
-                    onPress={this.toRegister.bind(this)}
+                    onPress={() => this.props.navigation.navigate('Register')}
                 >
                 </Button>
             </View>
