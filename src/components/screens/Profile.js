@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 
 
-class Home extends Component {
+class Profile extends Component {
     render() {
         return(
             <View>
                 <Text>
-                    You are on the home page
+                    You are on the profile page
                 </Text>
             </View>
         )
     }
 }
 
-export default Home;
+export default Profile;

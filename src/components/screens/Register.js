@@ -8,7 +8,6 @@ class Register extends Component {
     render() {
         return(
             <View>
-                <Header headerText={'Birdy'} />
                 <RegisterForm />
             </View>
         )

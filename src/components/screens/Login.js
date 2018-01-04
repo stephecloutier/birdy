@@ -8,7 +8,6 @@ class Login extends Component {
     render() {
         return(
             <View>
-                <Header headerText={'Birdy'} />
                 <LoginForm formText={'Authentification'} />
                 <Button
                     title='Créer un compte'

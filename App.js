@@ -5,26 +5,37 @@
  */
 
 import React, { Component } from 'react';
-//import {connect} from 'react-redux'
 import * as firebase from 'firebase';
+import {connect} from 'react-redux';
+import {isSignedIn} from './src/actions/auth';
 
 import firebaseConfig from './settings';
-//import Login from './src/components/Login';
-//import Home from './src/components/screens/Home';
 
-import RootNavigator from './src/navigators/StackNavigator';
+import {SignedIn, SignedOut} from './src/navigators/router';
 
 let firebaseApp;
 
 class App extends Component {
+ 
     componentDidMount() {
         firebaseApp = firebase.initializeApp(firebaseConfig);
     }
-
-    
+ 
     render() {
-        return <RootNavigator />;
+        if(this.props.isLoggedIn) {
+            return <SignedIn />;
+        } else {
+            return <SignedOut />;
+        }
+        
     }
 }
 
-export default App;
+
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: state.auth.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(App);
