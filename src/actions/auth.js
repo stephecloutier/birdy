@@ -5,14 +5,15 @@ export const loginUser = (email, password) => dispatch => {
         .then((response) => {
             return dispatch(loginUserSuccess(response));
         })
-        .catch((error) => dispatch(loginUserFail));
+        .catch((error) => {
+            return dispatch(loginUserFail(error));
+        })
 }
 
 export const loginUserSuccess = (response) => {
     return {
         type: 'LOGIN',
         user: response,
-        isLoggedIn: true,
     }
 }
 

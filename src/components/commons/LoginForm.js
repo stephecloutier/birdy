@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {View, Button, Text} from 'react-native';
 import Field from './Field';
+import Error from './Error';
 
 import {loginUser} from '../../actions/auth';
 
 class LoginForm extends Component {
-    
+    /*
     constructor(props) {
         super(props);
         this.state = {}; 
-    }
+    }*/
 
 
     onButtonPress(){
@@ -44,18 +45,14 @@ class LoginForm extends Component {
                         onPress={this.onButtonPress.bind(this)}>
                     </Button>
                 </View>
+                <Error />
+                <Text>
+                    {this.props.error}
+                </Text>
             </View>
         )
     }
 }
-/*
-const mapStateToProps = (state) => {
-    return {
-        email: state.email,
-        password: state.password,
-    }
-}*/
-
 /*
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -69,4 +66,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {loginUser})(LoginForm);
-// export default connect(mapStateToProps, {loginUser})(LoginForm);

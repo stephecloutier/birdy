@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 
 import firebaseConfig from './settings';
 import Login from './src/components/Login';
+import Home from './src/components/Home';
 
 let firebaseApp;
 
@@ -21,7 +22,7 @@ class App extends Component {
     
     render() {
         if (this.props.isLoggedIn) {
-            console.log('Tu est connecté bravo');
+            return <Home />;
         } else {
             return <Login />;
         }

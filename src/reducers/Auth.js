@@ -1,7 +1,5 @@
 const defaultState = {
     isLoggedIn: false,
-    email: '',
-    password: ''
 }
 
 
@@ -10,11 +8,11 @@ const auth = (state = defaultState, action) => {
         case 'LOGIN':
             console.log(action);
             const { user: { uid: userId} } = action;
-            return { ...state, loggedIn: true, userId }
+            return { ...state, isLoggedIn: true, userId }
         case 'LOGIN_HAS_FAILED':
-            console.error('erreur lors de l\'authentification');
+            console.log('erreur lors de l\'authentification');
             const { error } = action;
-            return { ...state, loggedIn: false, error }
+            return { ...state, isLoggedIn: false, error }
         default:
             return state;
     }

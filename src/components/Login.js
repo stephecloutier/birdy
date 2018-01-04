@@ -9,7 +9,7 @@ class Login extends Component {
         return(
             <View>
                 <Header headerText={'Birdy'} />
-                <LoginForm />
+                <LoginForm formText={'Authentification'} />
             </View>
         )
     }
