@@ -46,9 +46,6 @@ class LoginForm extends Component {
                     </Button>
                 </View>
                 <Error />
-                <Text>
-                    {this.props.error}
-                </Text>
             </View>
         )
     }
