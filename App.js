@@ -11,7 +11,6 @@ import {isSignedIn} from './src/actions/auth';
 
 import firebaseConfig from './settings';
 
-import LoginStack from './src/navigators/LoginStack';
 import {SignedInNav} from './src/navigators/SignedInNav';
 import ReduxNavigation from './src/navigators/ReduxNav';
 

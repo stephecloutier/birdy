@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ReactNavigation from 'react-navigation'
 import { connect } from 'react-redux'
-import LoginStack from './LoginStack'
+import AppNavigation from './AppNavigation'
 
 // here is our redux-aware our smart component
 function ReduxNavigation (props) {
@@ -11,7 +11,7 @@ function ReduxNavigation (props) {
     state: nav
   })
 
-  return <LoginStack navigation={navigation} />
+  return <AppNavigation navigation={navigation} />
 }
 
 const mapStateToProps = state => ({ nav: state.nav })

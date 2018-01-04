@@ -1,12 +1,12 @@
-import LoginStack from "../navigators/LoginStack";
+import AppNavigation from "../navigators/AppNavigation";
 
 /*
 const initialState = SignedOutNav.router.getStateForAction(
-    SignedOutNav.router.getActionForPathAndParams('Login')
+    SignedOutNav.router.getActionForPathAndParams('LoginStack')
 );*/
 
 const navReducer = (state, action) => {
-    const newState = LoginStack.router.getStateForAction(action, state)
+    const newState = AppNavigation.router.getStateForAction(action, state)
     return newState || state
 }
 
