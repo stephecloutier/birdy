@@ -21,9 +21,6 @@ class LoginForm extends Component {
     render() {
         return(
             <View>
-                <Text>
-                    {this.props.formText}
-                </Text>
                 <Field
                     label='Email'
                     placeholder='johndoe@birdy.be'

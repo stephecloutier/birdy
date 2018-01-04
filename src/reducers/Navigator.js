@@ -1,15 +1,8 @@
-const defaultState = {
-    isLoggedIn: false,
-}
 
-const navigator = (state = defaultState, action) => {
+const navigator = (state = null, action) => {
     switch(action.type) {
-        case 'GET_INITIAL_ROUTE':
-            if(state.isLoggedIn) {
-                return { ...state, initialRoute: 'Home' };
-            } else {
-                return { ...state, initialRoute: 'Login' };
-            }
+        case 'TOGGLE_DRAWER':
+            return { ...state, initialRoute: 'Home' };
         default:
             return state;
     }

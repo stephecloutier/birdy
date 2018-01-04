@@ -1,5 +1,5 @@
-export const getInitialRoute = () => {
+export const toggleDrawer = () => {
     return {
-        type: 'GET_INITIAL_ROUTE',
+        type: 'TOGGLE_DRAWER',
     }
 }
