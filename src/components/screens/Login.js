@@ -1,25 +1,34 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Button} from 'react-native';
+import { NavigationActions } from "react-navigation";
+import { connect } from "react-redux";
+
 import LoginForm from '../commons/LoginForm';
 import Header from '../commons/Header';
 
 
 class Login extends Component {
+    navigate = () => {
+        const navigateToRegister = NavigationActions.navigate({
+            routeName:'Register',
+            params:{name:'Register'}
+        })
+
+        this.props.navigation.dispatch(navigateToRegister);
+    }
     render() {
         return(
-            <View>
+            <View style={styles.container}>
                 <LoginForm />
                 <Button
                     title='Créer un compte'
-                    onPress={() => this.props.navigation.navigate('Register')}
+                    onPress={this.navigate}
                 >
                 </Button>
             </View>
         )
     }
 }
-
-export default Login;
 
 
 const styles = StyleSheet.create({
@@ -31,3 +40,16 @@ const styles = StyleSheet.create({
     },
   });
   
+export default Login;
+
+  /*
+
+  const mapStateToProps = state => ({
+    state
+  });
+  
+ 
+  const LoginScreen = connect(mapStateToProps)(Login);
+  
+  export default LoginScreen;
+  */

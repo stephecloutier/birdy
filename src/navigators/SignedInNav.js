@@ -1,31 +1,11 @@
 import React from 'react';
 import {StyleSheet, Image} from 'react-native';
-import { StackNavigator, DrawerNavigator } from 'react-navigation';
-
-import Login from '../components/screens/Login';
-import Register from '../components/screens/Register';
-
-export const SignedOut = StackNavigator({
-    Login: {
-        screen: Login,
-        navigationOptions: {
-            headerTitle: 'Authentification',
-        },
-    },
-    Register: {
-        screen: Register,
-        navigationOptions: {
-            headerTitle: 'Inscription',
-        },
-    },
-}, {
-    initialRouteName: 'Login',
-});
+import { DrawerNavigator } from 'react-navigation';
 
 import Home from '../components/screens/Home';
 import Profile from '../components/screens/Profile';
 
-export const SignedIn = DrawerNavigator({
+export const SignedInNav = DrawerNavigator({
     Home: {
         screen: Home,
         navigationOptions: {

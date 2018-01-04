@@ -11,7 +11,9 @@ import {isSignedIn} from './src/actions/auth';
 
 import firebaseConfig from './settings';
 
-import {SignedIn, SignedOut} from './src/navigators/router';
+import SignedOutNav from './src/navigators/SignedOutNav';
+import {SignedInNav} from './src/navigators/SignedInNav';
+import ReduxNavigation from './src/navigators/ReduxNav';
 
 let firebaseApp;
 
@@ -23,9 +25,9 @@ class App extends Component {
  
     render() {
         if(this.props.isLoggedIn) {
-            return <SignedIn />;
+            return <SignedInNav />;
         } else {
-            return <SignedOut />;
+            return <ReduxNavigation />;
         }
         
     }
