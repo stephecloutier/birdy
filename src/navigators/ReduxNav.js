@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ReactNavigation from 'react-navigation'
 import { connect } from 'react-redux'
-import SignedOutNav from './SignedOutNav'
+import LoginStack from './LoginStack'
 
 // here is our redux-aware our smart component
 function ReduxNavigation (props) {
@@ -11,39 +11,8 @@ function ReduxNavigation (props) {
     state: nav
   })
 
-  return <SignedOutNav navigation={navigation} />
+  return <LoginStack navigation={navigation} />
 }
 
 const mapStateToProps = state => ({ nav: state.nav })
 export default connect(mapStateToProps)(ReduxNavigation)
-
-
-/// -----------------------------------
-
-/*
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { addNavigationHelpers } from "react-navigation";
-import NavigationStack from "./SignedOutNav";
-
-class AppNavigation extends Component {
-  render() {
-    const { navigationState, dispatch } = this.props;
-    return (
-      <NavigationStack
-        navigation={addNavigationHelpers({ dispatch, state: navigationState })}
-      />
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    navigationState: state.NavigationReducer
-  };
-};
-
-
-export default connect(mapStateToProps)(AppNavigation);
-
-*/

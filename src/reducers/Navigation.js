@@ -1,4 +1,4 @@
-import SignedOutNav from "../navigators/SignedOutNav";
+import LoginStack from "../navigators/LoginStack";
 
 /*
 const initialState = SignedOutNav.router.getStateForAction(
@@ -6,7 +6,7 @@ const initialState = SignedOutNav.router.getStateForAction(
 );*/
 
 const navReducer = (state, action) => {
-    const newState = SignedOutNav.router.getStateForAction(action, state)
+    const newState = LoginStack.router.getStateForAction(action, state)
     return newState || state
 }
 

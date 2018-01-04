@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Login from '../components/screens/Login';
 import Register from '../components/screens/Register';
 
-const SignedOutNav = StackNavigator({
+const LoginStack = StackNavigator({
     Login: {
         screen: Login,
         routeName: 'Login',
@@ -23,4 +23,4 @@ const SignedOutNav = StackNavigator({
     initialRouteName: 'Login',
 });
 
-export default SignedOutNav;
+export default LoginStack;
