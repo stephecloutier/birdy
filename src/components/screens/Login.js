@@ -8,7 +8,7 @@ class Login extends Component {
     render() {
         return(
             <View>
-                <LoginForm formText={'Authentification'} />
+                <LoginForm />
                 <Button
                     title='Créer un compte'
                     onPress={() => this.props.navigation.navigate('Register')}

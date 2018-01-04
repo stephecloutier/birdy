@@ -8,13 +8,13 @@ export const SignedOut = StackNavigator({
     Login: {
         screen: Login,
         navigationOptions: {
-            headerTitle: 'Login',
+            headerTitle: 'Authentification',
         },
     },
     Register: {
         screen: Register,
         navigationOptions: {
-            headerTitle: 'Register',
+            headerTitle: 'Inscription',
         },
     },
 }, {
