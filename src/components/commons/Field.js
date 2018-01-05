@@ -10,7 +10,6 @@ const Field = ({label,value,onChangeText,placeholder,secureTextEntry}) => {
                 secureTextEntry={secureTextEntry}
                 autoCorrect={false}
                 placeholder={placeholder}
-                value={value}
                 onChangeText={onChangeText} />
         </View>
     )

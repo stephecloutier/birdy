@@ -14,6 +14,22 @@ export const loginUser = (email, password) => dispatch => {
         })
 }
 
+export const logoutUser = () => dispatch => {
+    firebase.auth().signOut()
+        .then(() => {
+            const actionToDispatch = NavigationActions.reset({
+                index: 0,
+                key: null,  // black magic
+                actions: [NavigationActions.navigate({ routeName: 'LoginStack' })]
+            })
+            return (
+                dispatch(signOutUser()),
+                dispatch(actionToDispatch)
+            );
+        })
+}
+
+
 export const loginUserSuccess = (response) => {
     return {
         type: 'LOGIN',
@@ -25,5 +41,11 @@ export const loginUserFail = (error) => {
     return {
         type: 'LOGIN_HAS_FAILED',
         error
+    }
+}
+
+export const signOutUser = () => {
+    return {
+        type: 'LOGOUT'
     }
 }
