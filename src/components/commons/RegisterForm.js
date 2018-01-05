@@ -5,57 +5,59 @@ import Field from './Field';
 import Error from './Error';
 
 
-//import {createUser} from '../../actions/register';
+import {createUser} from '../../actions/register';
 
 class RegisterForm extends Component {
+    constructor(props) {
+        super(props);
+        this.user = {
+            isn: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+        }
+    }
 
     onButtonPress(){
-        //this.props.loginUser(this.props.auth.email, this.props.auth.password);
+        this.props.createUser(this.user);
     }
 
     render() {
         return(
             <View>
-                <Text>
-                    {this.props.formText}
-                </Text>
                 <Field 
                     label='#ISN'
                     placeholder='ZZ00WW'
-                    value={this.props.isn}
                     onChangeText={(text) => {
-                        this.props.register.isn = text;
+                        this.user.isn = text;
                     }}
                 />
                 <Field 
                     label='Prénom'
                     placeholder='John'
-                    value={this.props.firstName}
                     onChangeText={(text) => {
-                        this.props.register.firstName = text;
+                        this.user.first_name = text;
                     }}
                 />
                 <Field 
                     label='Nom'
                     placeholder='Doe'
-                    value={this.props.lastName}
                     onChangeText={(text) => {
-                        this.props.register.lastName = text;
+                        this.user.last_name = text;
                     }}
                 />
                 <Field
                     label='Email'
                     placeholder='johndoe@birdy.be'
-                    value={this.props.email}
                     onChangeText={(text) => {
-                        this.props.register.email = text;
+                        this.user.email = text;
                     }}
                 />
                 <Field
                     secureTextEntry
                     label='Mot de passe'
-                    value={this.props.password}
-                    onChangeText={text => this.props.register.password = text}
+                    onChangeText={text => this.user.password = text}
                 />
                 <View>
                     <Button
@@ -73,4 +75,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps)(RegisterForm);
+export default connect(mapStateToProps, {createUser})(RegisterForm);
