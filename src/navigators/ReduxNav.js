@@ -10,10 +10,6 @@ function ReduxNavigation (props) {
     dispatch,
     state: nav
   })
-  /*
-  if(isLoggedIn) {
-    return <AppNavigation navigation={navigation} />
-  }*/
   return <AppNavigation navigation={navigation} />
 }
 
