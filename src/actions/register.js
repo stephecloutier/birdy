@@ -17,7 +17,7 @@ export const createUser = ({email, password, first_name, last_name, isn}) => dis
             )
         }) 
         .catch((error) => {
-            return disptach(createUserFail(error));
+            return dispatch(createUserFail(error));
         });
 }
 

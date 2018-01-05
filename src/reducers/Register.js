@@ -8,7 +8,7 @@ const auth = (state = defaultState, action) => {
         case 'CREATE_USER_SUCCESS':
             const { user: { uid: userId} } = action;
             return { ...state, isLoggedIn: true, userId }
-        case 'CREATE_USER_FAILED':
+        case 'CREATE_USER_FAIL':
             const { error } = action;
             return { ...state, isLoggedIn: false, error }
         default:
