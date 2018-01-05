@@ -18,9 +18,10 @@ const DrawerNavigation = StackNavigator({
 }, {
     headerMode: 'float',
     navigationOptions: ({navigation}) => ({
-        headerStyle: {backgroundColor: 'green'},
-        title: 'Logged In to your app!',
-        headerLeft: <Text onPress={() => navigation.navigate('DrawerToggle')}>Menu</Text>
+        headerStyle: {backgroundColor: 'hotpink'},
+        title: 'Bienvenue [machin]',
+        headerLeft: <Text onPress={() => navigation.navigate('DrawerToggle')}>Menu</Text>,
+        gesturesEnabled: false
     })
 })
 
