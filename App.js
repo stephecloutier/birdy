@@ -6,12 +6,9 @@
 
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import {connect} from 'react-redux';
-import {isSignedIn} from './src/actions/auth';
 
 import firebaseConfig from './settings';
 
-import {SignedInNav} from './src/navigators/SignedInNav';
 import ReduxNavigation from './src/navigators/ReduxNav';
 
 let firebaseApp;

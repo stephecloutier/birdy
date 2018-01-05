@@ -17,23 +17,10 @@ class Login extends Component {
         this.props.navigation.dispatch(navigateToRegister);
     }
 
-    navigateLogin = () => {
-        const navigateToLogin = NavigationActions.navigate({
-            routeName:'DrawerStack',
-        })
-
-        this.props.navigation.dispatch(navigateToLogin);
-
-    }
     render() {
         return(
             <View style={styles.container}>
                 <LoginForm />
-                <Button
-                    title='Pretend you log in'
-                    onPress={this.navigateLogin}
-                >
-                </Button>
                 <Button
                     title='Créer un compte'
                     onPress={this.navigate}
