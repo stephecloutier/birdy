@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
     auth,
     register,
     nav: navReducer,
+    
 });
 
 export default rootReducer;

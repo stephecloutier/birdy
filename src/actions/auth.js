@@ -1,9 +1,13 @@
 import * as firebase from 'firebase';
+import {NavigationActions} from 'react-navigation';
 
 export const loginUser = (email, password) => dispatch => {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((response) => {
-            return dispatch(loginUserSuccess(response));
+            return (
+                dispatch(loginUserSuccess(response)),
+                dispatch(NavigationActions.navigate({ routeName: 'DrawerStack' }))
+            );
         })
         .catch((error) => {
             return dispatch(loginUserFail(error));

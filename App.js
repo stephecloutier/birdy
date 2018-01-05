@@ -23,20 +23,8 @@ class App extends Component {
     }
  
     render() {
-        if(this.props.isLoggedIn) {
-            return <SignedInNav />;
-        } else {
-            return <ReduxNavigation />;
-        }
-        
+        return <ReduxNavigation />; 
     }
 }
 
-
-function mapStateToProps(state) {
-    return {
-        isLoggedIn: state.auth.isLoggedIn
-    }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

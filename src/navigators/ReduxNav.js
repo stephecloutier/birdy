@@ -5,12 +5,15 @@ import AppNavigation from './AppNavigation'
 
 // here is our redux-aware our smart component
 function ReduxNavigation (props) {
-  const { dispatch, nav } = props
+  const { dispatch, nav, isLoggedIn } = props
   const navigation = ReactNavigation.addNavigationHelpers({
     dispatch,
     state: nav
   })
-
+  /*
+  if(isLoggedIn) {
+    return <AppNavigation navigation={navigation} />
+  }*/
   return <AppNavigation navigation={navigation} />
 }
 
