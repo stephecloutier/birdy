@@ -5,14 +5,17 @@ import Login from '../components/screens/Login'
 import Register from '../components/screens/Register'
 import Home from '../components/screens/Home'
 import Encyclopedia from '../components/screens/Encyclopedia'
+import Capture from '../components/screens/Capture'
 import DrawerContainer from '../components/DrawerContainer'
+
 
 
 // DrawerNavigator(RouteConfigs, DrawerNavigatorConfig)
 // drawer stack
 const DrawerRoutes = {
     Accueil: { screen: Home },
-    Encyclopédie: { screen: Encyclopedia }
+    Encyclopédie: { screen: Encyclopedia },
+    Capture: { screen: Capture }
 };
 const DrawerOptions = {
     contentComponent: DrawerContainer,
