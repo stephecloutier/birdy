@@ -9,7 +9,7 @@ import Encyclopedia from '../components/screens/Encyclopedia'
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
-    Home: { screen: Home },
+    Accueil: { screen: Home },
     Encyclopedia: { screen: Encyclopedia },
 })
 
