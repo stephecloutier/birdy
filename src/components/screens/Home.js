@@ -7,7 +7,6 @@ import {logoutUser} from '../../actions/auth';
 
 class Home extends Component {
     onButtonPress() {
-        console.log('logout')
         this.props.logoutUser();
     }
     render() {

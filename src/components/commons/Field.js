@@ -15,5 +15,4 @@ const Field = ({label,value,onChangeText,placeholder,secureTextEntry}) => {
     )
 }
 
-//export {Field};
 export default Field;

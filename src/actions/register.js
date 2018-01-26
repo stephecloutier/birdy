@@ -14,13 +14,12 @@ const validateUser = (email, password, first_name, last_name, isn) => {
     if(!password) errorList.push('Vous devez fournir un mot de passe')
     if(!email) errorList.push('Vous devez fournir une adresse email')
     
-
     return errorList;
 }
 
 export const createUser = ({email, password, first_name, last_name, isn}) => dispatch => {
     let validationErrors = validateUser(email, password, first_name, last_name, isn);
-    if(validationErrors) {
+    if(validationErrors != false) {
         return dispatch(validateUserFail(validationErrors));
     }
     firebase.auth().createUserWithEmailAndPassword(email, password)
