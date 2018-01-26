@@ -35,12 +35,23 @@ export const createUser = ({email, password, first_name, last_name, isn}) => dis
             });
             return (
                 dispatch(createUserSuccess(response)),
-                dispatch(NavigationActions.navigate({ routeName: 'DrawerStack' }))
+                dispatch(getUserInfos(response.uid))
             )
         }) 
         .catch((error) => {
             return dispatch(createUserFail(error));
         });
+}
+
+export const getUserInfos = (userId) => dispatch => {
+    const ref = firebase.database().ref("users/" + userId);
+    ref.on('value', snapshot => {
+        dispatch({
+            type: 'SAVE_USER_INFOS',
+            payload: snapshot.val(),
+        })
+        dispatch(NavigationActions.navigate({ routeName: 'DrawerStack' }))
+     });
 }
 
 export const createUserSuccess = (response) => {
