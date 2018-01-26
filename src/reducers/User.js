@@ -1,6 +1,5 @@
 
 const user = (state = null, action) => {
-    console.log(action)
     switch(action.type) {
         case 'SAVE_USER_INFOS':
             const first_name = action.payload.first_name
