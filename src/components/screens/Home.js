@@ -15,11 +15,6 @@ class Home extends Component {
                 <Text>
                     You are on the home page
                 </Text>
-                <Button
-                    title='Logout'
-                    onPress={this.onButtonPress.bind(this)}
-                >
-                </Button>
             </View>
         )
     }
