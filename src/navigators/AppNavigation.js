@@ -5,25 +5,41 @@ import Login from '../components/screens/Login'
 import Register from '../components/screens/Register'
 import Home from '../components/screens/Home'
 import Encyclopedia from '../components/screens/Encyclopedia'
+import DrawerContainer from '../components/DrawerContainer'
 
 
+// DrawerNavigator(RouteConfigs, DrawerNavigatorConfig)
 // drawer stack
-const DrawerStack = DrawerNavigator({
+const DrawerRoutes = {
     Accueil: { screen: Home },
-    Encyclopedia: { screen: Encyclopedia },
-})
+    Encyclopédie: { screen: Encyclopedia }
+};
+const DrawerOptions = {
+    contentComponent: DrawerContainer,
+};
+
+const TheDrawer = DrawerNavigator(DrawerRoutes, DrawerOptions)
+
+const drawerButton = (navigation) =>
+  <Text
+    style={{padding: 5, color: 'white'}}
+    onPress={() => {
+        navigation.navigate('DrawerToggle')
+    }
+  }>Menu</Text>
 
 
 const DrawerNavigation = StackNavigator({
-    DrawerStack: { screen: DrawerStack }
+  DrawerStack: { screen: TheDrawer }
 }, {
-    headerMode: 'float',
-    navigationOptions: ({navigation}) => ({
-        headerStyle: {backgroundColor: 'hotpink'},
-        title: 'Bienvenue [machin]',
-        headerLeft: <Text onPress={() => navigation.navigate('DrawerToggle')}>Menu</Text>,
-        gesturesEnabled: false
-    })
+  headerMode: 'float',
+  navigationOptions: ({navigation}) => ({
+    headerStyle: {backgroundColor: '#E73536'},
+    title: 'Welcome!',
+    headerTintColor: 'white',
+    gesturesEnabled: false,
+    headerLeft: drawerButton(navigation)
+  })
 })
 
 // login stack
