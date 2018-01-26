@@ -3,17 +3,17 @@ import {View, Text, Button} from 'react-native';
 import {connect} from 'react-redux';
 import Header from '../commons/Header';
 
-import {logoutUser} from '../../actions/auth';
 
 class Home extends Component {
-    onButtonPress() {
-        this.props.logoutUser();
+    componentDidMount() {
+        console.log(this.props)
     }
+
     render() {
         return(
             <View>
                 <Text>
-                    You are on the home page
+                    Bienvenue {this.props.user.first_name} {this.props.user.last_name} !
                 </Text>
             </View>
         )
@@ -25,6 +25,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, {logoutUser})(Home);
-
-//export default Home;
+export default connect(mapStateToProps, )(Home);

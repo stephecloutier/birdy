@@ -6,7 +6,7 @@ export const loginUser = (email, password) => dispatch => {
         .then((response) => {
             return (
                 dispatch(loginUserSuccess(response)),
-                dispatch(NavigationActions.navigate({ routeName: 'DrawerStack' }))
+                dispatch(getUserInfos(response.uid))
             );
         })
         .catch((error) => {
@@ -29,6 +29,16 @@ export const logoutUser = () => dispatch => {
         })
 }
 
+export const getUserInfos = (userId) => dispatch => {
+    const ref = firebase.database().ref("users/" + userId);
+    ref.on('value', snapshot => {
+        dispatch({
+            type: 'SAVE_USER_INFOS',
+            payload: snapshot.val(),
+        })
+       dispatch(NavigationActions.navigate({ routeName: 'DrawerStack' }))
+     });
+}
 
 export const loginUserSuccess = (response) => {
     return {
