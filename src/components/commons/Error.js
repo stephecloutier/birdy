@@ -6,6 +6,7 @@ class Error extends Component {
     renderError(singleError){
         return <Text>{singleError.item}</Text>
     };
+
         
     render() {
         if(this.props.auth.error) {

@@ -4,13 +4,13 @@ import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import Login from '../components/screens/Login'
 import Register from '../components/screens/Register'
 import Home from '../components/screens/Home'
-import Profile from '../components/screens/Profile'
+import Encyclopedia from '../components/screens/Encyclopedia'
 
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
     Home: { screen: Home },
-    Profile: { screen: Profile },
+    Encyclopedia: { screen: Encyclopedia },
 })
 
 
