@@ -6,16 +6,53 @@ import Register from '../components/screens/Register'
 import Home from '../components/screens/Home'
 import Encyclopedia from '../components/screens/Encyclopedia'
 import Capture from '../components/screens/Capture'
+import IndividualCapture from '../components/screens/IndividualCapture'
 import DrawerContainer from '../components/DrawerContainer'
 
 
+// Capture stack
+const CaptureStack = StackNavigator({
+    CaptureInitialization: { 
+        screen: Capture,
+        routeName: 'CaptureInitialization',
+        navigationOptions: {
+            headerTitle: 'Informations génériques',
+        },
+    },
+    IndividualCapture: { 
+        screen: IndividualCapture,
+        routeName: 'IndividualCapture',
+        navigationOptions: {
+            headerTitle: 'Informations sur l\'oiseau',
+        },
+    }
+}, {
+    initialRouteName: 'CaptureInitialization',
+    navigationOptions: {
+        headerStyle: {
+            marginTop: -15,
+            paddingLeft: 0,
+            paddingTop: 0,
+            paddingRight: 0,
+            paddingBottom: 0,
+        },
+        headerTintColor: '#E73536',
+        headerBackTitle: ' ',
+    }
+});
 
-// DrawerNavigator(RouteConfigs, DrawerNavigatorConfig)
+
+
 // drawer stack
 const DrawerRoutes = {
     Accueil: { screen: Home },
     Encyclopédie: { screen: Encyclopedia },
-    Capture: { screen: Capture }
+    Capture: { 
+        screen: CaptureStack,
+        navigationOptions: {
+            headerTitle: 'Capture',
+        },
+    }
 };
 const DrawerOptions = {
     contentComponent: DrawerContainer,
@@ -38,7 +75,7 @@ const DrawerNavigation = StackNavigator({
   headerMode: 'float',
   navigationOptions: ({navigation}) => ({
     headerStyle: {backgroundColor: '#E73536'},
-    title: 'Welcome!',
+    title: 'Birdy',
     headerTintColor: 'white',
     gesturesEnabled: false,
     headerLeft: drawerButton(navigation)
