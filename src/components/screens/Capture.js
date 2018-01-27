@@ -28,7 +28,12 @@ class Capture extends Component {
         this.props.startCapture(this.capture)
     }
     continueCapture() {
-        this.props.startCapture()
+        //this.props.startCapture()
+        const navigateToIndividualCapture = NavigationActions.navigate({
+            routeName:'IndividualCapture',
+            params:{name:'IndividualCapture'}
+        })
+        this.props.navigation.dispatch(navigateToIndividualCapture);
     }
     endCapture = () => {
         const navigateToHome = NavigationActions.navigate({
