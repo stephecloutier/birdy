@@ -6,7 +6,8 @@ export const loginUser = (email, password) => dispatch => {
         .then((response) => {
             return (
                 dispatch(loginUserSuccess(response)),
-                dispatch(getUserInfos(response.uid))
+                dispatch(getUserInfos(response.uid)),
+                dispatch(loginUserFail(''))
             );
         })
         .catch((error) => {

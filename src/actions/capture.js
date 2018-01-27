@@ -90,6 +90,10 @@ export const saveBird = (bird, navigation) => dispatch => {
         })
 }
 
+export const getUserCaptures = (userId) => dispatch => {
+    console.log(userId)
+}
+
 export const startCaptureSuccess = (payload) =>  {
     return {
         type: 'START_CAPTURE',

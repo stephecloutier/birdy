@@ -22,6 +22,7 @@ export const createUser = ({email, password, first_name, last_name, isn}) => dis
     if(validationErrors != false) {
         return dispatch(validateUserFail(validationErrors));
     }
+    validationErrors = []
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((response) => {
             this.user = response
@@ -33,7 +34,9 @@ export const createUser = ({email, password, first_name, last_name, isn}) => dis
             }).then((response) => {
                 return (
                     dispatch(createUserSuccess(this.user)),
-                    dispatch(getUserInfos(this.user.uid))
+                    dispatch(getUserInfos(this.user.uid)),
+                    dispatch(validateUserFail(validationErrors)),
+                    dispatch(createUserFail(''))
                 )
             })
         })
