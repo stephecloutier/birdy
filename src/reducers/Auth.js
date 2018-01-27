@@ -6,8 +6,7 @@ const defaultState = {
 const auth = (state = defaultState, action) => {
     switch(action.type) {
         case 'LOGIN':
-            const { user: { uid: userId} } = action;
-            return { ...state, isLoggedIn: true, userId, error: undefined }
+            return { ...state, isLoggedIn: true, userId: action.user.uid, error: undefined }
         case 'LOGIN_HAS_FAILED':
             const { error } = action;
             return { ...state, isLoggedIn: false, error }

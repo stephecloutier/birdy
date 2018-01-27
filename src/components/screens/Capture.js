@@ -16,7 +16,8 @@ class Capture extends Component {
             date: '',
             method: '',
             lat: '',
-            lng: ''
+            lng: '',
+            uid: this.props.auth.userId ? this.props.auth.userId : this.props.register.userId,
         }
     }
     componentWillUnmount() {
@@ -45,7 +46,6 @@ class Capture extends Component {
         const date = new Date(this.capture.date)
         const formattedDate = date.getDate() + '-' + ((date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1)) + '-' + date.getFullYear()
 
-        console.log(formattedDate)
         const captureOptions = [
             'Filet',
             'Nid'

@@ -4,6 +4,7 @@ import {View, Text, Button} from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SegmentedControls } from 'react-native-radio-buttons'
 import Field from '../commons/Field';
+import Error from '../commons/Error';
 
 import {saveBird} from '../../actions/capture';
 
@@ -11,6 +12,7 @@ class IndividualCapture extends Component {
     constructor(props) {
         super(props);
         this.bird = {
+            session_id: this.props.capture.captureId,
             reprise: false,
             bague: '',
             latin_name: '',
@@ -22,13 +24,14 @@ class IndividualCapture extends Component {
         }
     }
 
-    saveBird() {
+    componentWillMount() {
         console.log(this.bird)
-        const {goBack} = this.props.navigation;
-        // this.props.hasCaptureStarted = true
-        goBack()
+    }
 
-        //this.props.saveBird(this.bird);
+    saveBird() {
+        const {goBack} = this.props.navigation;
+        this.props.saveBird(this.bird);
+        goBack()
     }
 
     setCaptureReprise(data) {
@@ -118,6 +121,8 @@ class IndividualCapture extends Component {
                     title='Enregistrer'
                     onPress={this.saveBird.bind(this)} >
                 </Button>
+
+                <Error />
             </View>
         )
     }

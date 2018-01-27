@@ -24,20 +24,19 @@ export const createUser = ({email, password, first_name, last_name, isn}) => dis
     }
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((response) => {
+            this.user = response
             firebase.database().ref('users/' + response.uid).set({
                 email: email,
                 first_name: first_name,
                 last_name: last_name,
                 isn: isn,
+            }).then((response) => {
+                return (
+                    dispatch(createUserSuccess(this.user)),
+                    dispatch(getUserInfos(this.user.uid))
+                )
             })
-            .catch((error) => {
-                return dispatch(createUserFail(error));
-            });
-            return (
-                dispatch(createUserSuccess(response)),
-                dispatch(getUserInfos(response.uid))
-            )
-        }) 
+        })
         .catch((error) => {
             return dispatch(createUserFail(error));
         });

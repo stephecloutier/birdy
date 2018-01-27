@@ -6,8 +6,7 @@ const defaultState = {
 const register = (state = defaultState, action) => {
     switch(action.type) {
         case 'CREATE_USER_SUCCESS':
-            const { user: { uid: userId} } = action;
-            return { ...state, isLoggedIn: true, userId }
+            return { ...state, isLoggedIn: true, userId: action.user.uid }
         case 'CREATE_USER_FAIL':
             const { error } = action;
             return { ...state, isLoggedIn: false, error }
