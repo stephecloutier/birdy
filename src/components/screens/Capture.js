@@ -38,6 +38,7 @@ class Capture extends Component {
         const navigate = NavigationActions.navigate({
             routeName:'DrawerStack',
         })
+        this.props.capture.captureHasStarted = false
         this.props.navigation.dispatch(navigate);
     }
 
