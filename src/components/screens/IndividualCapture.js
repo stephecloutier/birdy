@@ -27,9 +27,6 @@ class IndividualCapture extends Component {
     saveBird() {
         const {goBack} = this.props.navigation;
         this.props.saveBird(this.bird, this.props.navigation)
-            // .then((response) => {
-            //     goBack()
-            // })
     }
 
     setCaptureReprise(data) {
@@ -50,15 +47,15 @@ class IndividualCapture extends Component {
             'M',
             'F'
         ]
+        // pas eu encore le temps de gérer les reprises \\
+        // <Text>S'agit-il d'une reprise&nbsp;?</Text>
+        // <SegmentedControls
+        // options={ captureOptions }
+        // onSelection={ this.setCaptureReprise.bind(this) }
+        // selectedOption={ this.bird.reprise }
+        // />
         return(
             <View>
-                <Text>S'agit-il d'une reprise&nbsp;?</Text>
-                <SegmentedControls
-                options={ captureOptions }
-                onSelection={ this.setCaptureReprise.bind(this) }
-                selectedOption={ this.bird.reprise }
-                />
-
                 <Field 
                 label='Numéro de bague'
                 placeholder='123456'

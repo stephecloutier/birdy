@@ -61,26 +61,6 @@ export const saveBird = (bird, navigation) => dispatch => {
         })
 }
 
-// export const getCaughtBirds = (navigation) => dispatch => {
-//     firebase.database().ref('single_captures').once('value').then((snapshot) => {
-//         // console.log(snapshot.val())
-//         const allBirds = snapshot.val()
-//         const allBirdsArray = Object.keys(allBirds)
-//         console.log(getState())
-//         const filteredKeysArray = allBirdsArray.filter((key) => {
-//             //console.log(key)
-//             return birds.find((bird) => {
-//                 //console.log(key)
-//                 //console.log(bird)
-//                 return bird == key
-//             })
-//         })
-//         //console.log(filteredKeysArray)
-
-//     }).catch((error) => console.log(error))
-//     // navigation.goBack()
-// }
-
 export const startCaptureSuccess = (payload) =>  {
     return {
         type: 'START_CAPTURE',
