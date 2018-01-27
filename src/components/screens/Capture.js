@@ -19,10 +19,8 @@ class Capture extends Component {
             lng: ''
         }
     }
-    componentWillMount() {
-        if(this.props.capture) {
-            this.capture.captureHasStarted = this.props.captureHasStarted
-        }
+    componentWillUnmount() {
+        this.props.capture.captureHasStarted = false
     }
     startCapture() {
         this.capture.date = Date.now()
