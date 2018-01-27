@@ -25,6 +25,11 @@ class DrawerContainer extends React.Component {
           Faire une capture
         </Text>
         <Text
+          onPress={() => navigation.navigate('UserCaptures')}
+          style={styles.drawerItem}>
+          Mes captures
+        </Text>
+        <Text
           onPress={() => navigation.navigate('Encyclopédie')}
           style={styles.drawerItem}>
           Encyclopédie

@@ -7,6 +7,7 @@ import Home from '../components/screens/Home'
 import Encyclopedia from '../components/screens/Encyclopedia'
 import Capture from '../components/screens/Capture'
 import IndividualCapture from '../components/screens/IndividualCapture'
+import UserCaptures from '../components/screens/UserCaptures'
 import DrawerContainer from '../components/DrawerContainer'
 
 
@@ -46,7 +47,20 @@ const CaptureStack = StackNavigator({
 // drawer stack
 const DrawerRoutes = {
     Accueil: { screen: Home, routeName: 'Home' },
-    Encyclopédie: { screen: Encyclopedia, routeName: 'Encyclopedia' },
+    Encyclopédie: { 
+        screen: Encyclopedia, 
+        routeName: 'Encyclopedia',
+        navigationOptions: {
+            headerTitle: 'Encyclopédie',
+        }, 
+    },
+    UserCaptures: { 
+        screen: UserCaptures, 
+        routeName: 'UserCaptures',
+        navigationOptions: {
+            headerTitle: 'Vos captures',
+        },
+    },
     Capture: { 
         screen: CaptureStack,
         navigationOptions: {
