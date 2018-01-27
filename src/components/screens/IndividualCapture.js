@@ -24,14 +24,12 @@ class IndividualCapture extends Component {
         }
     }
 
-    componentWillMount() {
-        console.log(this.bird)
-    }
-
     saveBird() {
         const {goBack} = this.props.navigation;
-        this.props.saveBird(this.bird);
-        goBack()
+        this.props.saveBird(this.bird, this.props.navigation)
+            // .then((response) => {
+            //     goBack()
+            // })
     }
 
     setCaptureReprise(data) {

@@ -15,6 +15,10 @@ class Home extends Component {
         this.props.navigation.dispatch(navigateToCapture);
     }
 
+    componentWillMount() {
+        console.log('Component will mount (home)')
+    }
+
     render() {
         return(
             <View>

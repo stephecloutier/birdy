@@ -11,7 +11,7 @@ const capture = (state = defaultState, action) => {
             const { errorList } = action;
             return { ...state, errorList }
         case 'SAVE_BIRD':
-            return { ...state, birds: action.payload }
+            return { ...state, birds: state.birds.concat([action.payload]) }
         default:
             return state;
     }

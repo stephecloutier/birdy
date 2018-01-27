@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button } from 'react-native';
+import {View, Text, Button, FlatList } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import {connect} from 'react-redux';
@@ -28,23 +28,25 @@ class Capture extends Component {
         this.props.startCapture(this.capture)
     }
     continueCapture() {
-        //this.props.startCapture()
         const navigateToIndividualCapture = NavigationActions.navigate({
             routeName:'IndividualCapture',
             params:{name:'IndividualCapture'}
         })
         this.props.navigation.dispatch(navigateToIndividualCapture);
     }
-    endCapture = () => {
-        const navigateToHome = NavigationActions.navigate({
-            routeName:'Home',
-            params:{name:'Home'}
+    endCapture() {
+        const navigate = NavigationActions.navigate({
+            routeName:'DrawerStack',
         })
-        this.props.navigation.dispatch(navigateToHome);
+        this.props.navigation.dispatch(navigate);
     }
 
     setSelectedCaptureMethod(data) {
         this.capture.method = data
+    }
+
+    renderBird(singleBird) {
+        return <Text>{singleBird.item.latin_name + ' - ' + singleBird.item.bague}</Text>
     }
 
     render() {
@@ -60,6 +62,11 @@ class Capture extends Component {
                 <View>
                     <Text>Capture du {formattedDate} au {this.capture.method}</Text>
                     <Text>Oiseau(x) capturé(s)</Text>
+                    <FlatList 
+                        data={this.props.capture.birds}
+                        renderItem={this.renderBird}
+                        keyExtractor={(bird, index) => index}
+                    />
 
                     <Button
                         title='Ajouter un oiseau'
@@ -67,7 +74,7 @@ class Capture extends Component {
                     </Button>
                     <Button
                         title='Terminer la capture'
-                        onPress={this.endCapture} >
+                        onPress={this.endCapture.bind(this)} >
                     </Button>
                 </View>
             )

@@ -45,8 +45,8 @@ const CaptureStack = StackNavigator({
 
 // drawer stack
 const DrawerRoutes = {
-    Accueil: { screen: Home },
-    Encyclopédie: { screen: Encyclopedia },
+    Accueil: { screen: Home, routeName: 'Home' },
+    Encyclopédie: { screen: Encyclopedia, routeName: 'Encyclopedia' },
     Capture: { 
         screen: CaptureStack,
         navigationOptions: {
