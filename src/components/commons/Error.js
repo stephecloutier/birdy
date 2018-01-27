@@ -29,6 +29,14 @@ class Error extends Component {
                     keyExtractor={(item, index) => index}
                 />
             );
+        } else if(this.props.capture && this.props.capture.errorList) {
+            return (
+                <FlatList
+                    data={this.props.capture.errorList}
+                    renderItem={this.renderError}
+                    keyExtractor={(item, index) => index}
+                />
+            );
         } else {
             return <View></View>;
         }

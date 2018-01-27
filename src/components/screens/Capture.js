@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import {connect} from 'react-redux';
+import Field from '../commons/Field';
+import Error from '../commons/Error';
 
 import {startCapture} from '../../actions/capture';
 
@@ -11,12 +13,20 @@ class Capture extends Component {
     constructor(props) {
         super(props);
         this.capture = {
-            captureHasStarted: false,
+            date: '',
+            method: '',
+            lat: '',
+            lng: ''
+        }
+    }
+    componentWillMount() {
+        if(this.props.capture) {
+            this.capture.captureHasStarted = this.props.captureHasStarted
         }
     }
     startCapture() {
-        this.capture.captureHasStarted = true
-        this.props.startCapture()
+        this.capture.date = Date.now()
+        this.props.startCapture(this.capture)
     }
     continueCapture() {
         this.props.startCapture()
@@ -30,22 +40,22 @@ class Capture extends Component {
     }
 
     setSelectedCaptureMethod(data) {
-        this.props.method = data
+        this.capture.method = data
     }
 
-    // setCaptureDate(newDate) {
-    //     console.log(newDate)
-    //     this.props.date = newDate
-    // }
-
     render() {
+        const date = new Date(this.capture.date)
+        const formattedDate = date.getDate() + '-' + ((date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1)) + '-' + date.getFullYear()
+
+        console.log(formattedDate)
         const captureOptions = [
             'Filet',
             'Nid'
         ]
-        if(this.capture.captureHasStarted) {
+        if(this.props.capture && this.props.capture.captureHasStarted) {
             return(
                 <View>
+                    <Text>Capture du {formattedDate} au {this.capture.method}</Text>
                     <Text>Oiseau(x) capturé(s)</Text>
 
                     <Button
@@ -65,15 +75,29 @@ class Capture extends Component {
                     <SegmentedControls
                     options={ captureOptions }
                     onSelection={ this.setSelectedCaptureMethod.bind(this) }
-                    selectedOption={ this.props.method }
+                    selectedOption={ this.capture.method }
                     />
-    
-                    <Text>Date de capture</Text>
-            
+                    <Field 
+                        label='Latitude'
+                        placeholder='50.6502003'
+                        onChangeText={(text) => {
+                            this.capture.lat = text;
+                        }}
+                    />
+                    <Field 
+                        label='Longitude'
+                        placeholder='5.5588253'
+                        onChangeText={(text) => {
+                            this.capture.lng = text;
+                        }}
+                    />
+
                     <Button
                         title='Débuter la capture'
                         onPress={this.startCapture.bind(this)} >
                     </Button>
+
+                    <Error />
                 </View>
             )
         }
