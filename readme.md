@@ -55,11 +55,16 @@ Enfin, j'ai utilisé le middleware redux-thunk afin de pouvoir faire des requêt
 
 ## Aperçu de la base de données firebase
 ![alt text](https://github.com/stephecloutier/birdy/blob/master/apercu_firebase/root.png)
+Root de la database
 
-![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/birds.png)
+![alt text](https://github.com/stephecloutier/birdy/blob/master/apercu_firebase/birds.png)
+Oiseaux de l'encyclopédie
 
-![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/capture_sessions.png)
+![alt text](https://github.com/stephecloutier/birdy/blob/master/apercu_firebase/capture_sessions.png)
+Les séances de capture. La clé d'une séance correspond à sa date en millisecondes. Un user id est associé à chaque séance.
 
-![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/single_captures.png)
+![alt text](https://github.com/stephecloutier/birdy/blob/master/apercu_firebase/single_captures.png)
+Les captures individuelles. La clé est générée aléatoirement lors du .push(). L'id de la séance de capture correspondante est associé à chaque capture individuelle (permettant de retrouver l'utilisateur qui a capturé les oiseaux)
 
-![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/users.png)
+![alt text](https://github.com/stephecloutier/birdy/blob/master/apercu_firebase/users.png)
+Les users avec leurs noms et le numéro ISN. Les clés correspondent à leurs ID, généré par firebase.auth() lors de la création du compte.
