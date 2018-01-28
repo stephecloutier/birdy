@@ -90,8 +90,48 @@ export const saveBird = (bird, navigation) => dispatch => {
         })
 }
 
+export const updateBird = (bird, navigation) => dispatch => {
+    firebase.database().ref("single_captures/" + bird.id).set({
+            session_id: bird.session_id,
+            reprise: bird.reprise,
+            bague: bird.bague,
+            latin_name: bird.latin_name,
+            alaire: bird.alaire,
+            weight: bird.weight,
+            fat: bird.fat,
+            sex: bird.sex,
+            age: bird.age,
+    })
+        .then((response) => {
+            return (
+                dispatch(updateBirdSuccess()),
+                dispatch(NavigationActions.navigate({ routeName: 'UserCaptures' }))
+            )
+        })
+}
+
 export const getUserCaptures = (userId) => dispatch => {
-    console.log(userId)
+    firebase.database().ref("capture_sessions").on('value', snapshot => {
+        const captureKeys = Object.keys(snapshot.val())
+        const userKeys = captureKeys.filter((key) => {
+            return snapshot.val()[key].uid == userId
+        })
+        firebase.database().ref("single_captures").on('value', snapshot => {
+            const birdKeys = Object.keys(snapshot.val())
+            const userBirds = []
+            birdKeys.forEach((key) => {
+                if(userKeys.find((userKey) => snapshot.val()[key].session_id == userKey)) {
+                    const singleBird = snapshot.val()[key]
+                    singleBird.id = key
+                    userBirds.push(singleBird)
+                }
+            })
+            dispatch({
+                type: 'SAVE_USER_BIRDS',
+                payload: userBirds,
+            })
+        })
+     });
 }
 
 export const startCaptureSuccess = (payload) =>  {
@@ -107,6 +147,13 @@ export const saveBirdSuccess = (payload) =>  {
         payload,
     }
 }
+
+export const updateBirdSuccess = () =>  {
+    return {
+        type: 'UPDATE_BIRD',
+    }
+}
+
 
 export const validateCaptureFail = (errorList) => {
     return {

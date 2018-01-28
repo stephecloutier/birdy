@@ -8,6 +8,7 @@ import Encyclopedia from '../components/screens/Encyclopedia'
 import Capture from '../components/screens/Capture'
 import IndividualCapture from '../components/screens/IndividualCapture'
 import UserCaptures from '../components/screens/UserCaptures'
+import SingleBirdCapture from '../components/screens/SingleBirdCapture'
 import DrawerContainer from '../components/DrawerContainer'
 
 
@@ -60,6 +61,10 @@ const DrawerRoutes = {
         navigationOptions: {
             headerTitle: 'Vos captures',
         },
+    },
+    SingleBirdCapture: { 
+        screen: SingleBirdCapture, 
+        routeName: 'SingleBirdCapture',
     },
     Capture: { 
         screen: CaptureStack,

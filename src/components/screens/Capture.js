@@ -22,6 +22,7 @@ class Capture extends Component {
     }
     componentWillUnmount() {
         this.props.capture.captureHasStarted = false
+        this.props.capture.birds = []
     }
     startCapture() {
         this.capture.date = Date.now()
