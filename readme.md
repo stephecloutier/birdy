@@ -52,3 +52,14 @@ J'ai pu mettre en place cette navigation avec mon store redux et l'authentificat
 Tout ce setup permet à mon application d'avoir une navigation avant la connexion (entre la page login et register), puis une navigation *drawer* accessible depuis tous les écrans lorsque l'utilisateur est connecté. Les *stack* navigation supplémentaires permettent de rendre la navigation intuitive entre écran concernant les mêmes ressources (ex.: encyclopédie -> page individuelle d'un oiseau)
 
 Enfin, j'ai utilisé le middleware redux-thunk afin de pouvoir faire des requête asynchrones dans mes actions
+
+## Aperçu de la base de données firebase
+![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/root.png)
+
+![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/birds.png)
+
+![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/capture_sessions.png)
+
+![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/single_captures.png)
+
+![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/users.png)
