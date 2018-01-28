@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Text, FlatList, TouchableWithoutFeedback, Image} from 'react-native';
+import {View, Text, FlatList, TouchableWithoutFeedback, Image, ScrollView} from 'react-native';
 import * as firebase from 'firebase'
 import Bird from './Bird'
 
@@ -47,15 +47,14 @@ class Encyclopedia extends Component {
                 <Text>Loading</Text>
             )
         }
-        console.log(this.props)
         return(
-            <View>
+            <ScrollView>
                 <FlatList 
                     data={this.props.encyclopedia.birds}
                     renderItem={this.renderBird.bind(this)}
                     keyExtractor={(bird, index) => index}
                     />
-            </View>
+            </ScrollView>
         )
     }
 }

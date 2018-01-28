@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList, TouchableWithoutFeedback, Button} from 'react-native';
+import {View, Text, FlatList, TouchableWithoutFeedback, Button, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import Field from '../commons/Field';
@@ -68,7 +68,7 @@ class UserCaptures extends Component {
             )
         } else {
             return(
-                <View>
+                <ScrollView>
                     <Text>
                         Vos captures (cliquez sur un oiseau pour le modifier)
                     </Text>
@@ -78,7 +78,7 @@ class UserCaptures extends Component {
                         keyExtractor={(bird, index) => index}
                         extraData={this.props}
                     />
-                </View>
+                </ScrollView>
             )
         }
         

@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Text, FlatList, Image} from 'react-native';
-import * as firebase from 'firebase'
+import {View, Text, FlatList, Image, ScrollView} from 'react-native';
 
 class Bird extends Component {
     render() {
         const {common_name, description, habitats, family, distribution, latin_name, min_size, max_size, pictures} = this.props.encyclopedia.currentBird
         return (
-            <View>
+            <ScrollView>
                 <View>
                     <Text>Nom commun</Text>
                     <Text>{common_name}</Text>
@@ -85,7 +84,7 @@ class Bird extends Component {
                         keyExtractor={(picture, index) => index}
                     />
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }
