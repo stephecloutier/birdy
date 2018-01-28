@@ -5,6 +5,7 @@ import Login from '../components/screens/Login'
 import Register from '../components/screens/Register'
 import Home from '../components/screens/Home'
 import Encyclopedia from '../components/screens/Encyclopedia'
+import Bird from '../components/screens/Bird'
 import Capture from '../components/screens/Capture'
 import IndividualCapture from '../components/screens/IndividualCapture'
 import UserCaptures from '../components/screens/UserCaptures'
@@ -43,14 +44,44 @@ const CaptureStack = StackNavigator({
     }
 });
 
+// Encyclopedia stack
+const EncyclopediaStack = StackNavigator({
+    Encyclopedia: { 
+        screen: Encyclopedia,
+        routeName: 'Encyclopedia',
+        navigationOptions: {
+            headerTitle: 'Tous les oiseaux',
+        },
+    },
+    Bird: { 
+        screen: Bird,
+        routeName: 'Bird',
+        navigationOptions: ({navigation}) => ({
+            headerTitle: `${navigation.state.params.title}`,
+        })
+    }
+}, {
+    initialRouteName: 'Encyclopedia',
+    navigationOptions: {
+        headerStyle: {
+            marginTop: -15,
+            paddingLeft: 0,
+            paddingTop: 0,
+            paddingRight: 0,
+            paddingBottom: 0,
+        },
+        headerTintColor: '#E73536',
+        headerBackTitle: ' ',
+    }
+});
+
 
 
 // drawer stack
 const DrawerRoutes = {
     Accueil: { screen: Home, routeName: 'Home' },
     Encyclopédie: { 
-        screen: Encyclopedia, 
-        routeName: 'Encyclopedia',
+        screen: EncyclopediaStack, 
         navigationOptions: {
             headerTitle: 'Encyclopédie',
         }, 

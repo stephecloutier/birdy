@@ -14,7 +14,6 @@ class SingleBirdCapture extends Component {
     }
 
     updateBird() {
-        // console.log(this.props.capture.selectedBird)
         this.props.updateBird(this.props.capture.selectedBird, this.props.navigation)
     }
     render() {

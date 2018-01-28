@@ -70,7 +70,7 @@ class UserCaptures extends Component {
             return(
                 <View>
                     <Text>
-                        Vos captures (cliquer sur un oiseau pour le modifier)
+                        Vos captures (cliquez sur un oiseau pour le modifier)
                     </Text>
                     <FlatList 
                         data={this.props.capture.userBirds}
