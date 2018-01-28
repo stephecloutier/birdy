@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Text, FlatList, TouchableWithoutFeedback, Image, ScrollView} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Image, ScrollView, StyleSheet} from 'react-native';
 import * as firebase from 'firebase'
 import Bird from './Bird'
 
@@ -25,18 +25,18 @@ class Encyclopedia extends Component {
     renderBird(singleBird) {
         return(
             <View>
-                <TouchableWithoutFeedback 
+                <TouchableOpacity 
                     onPress={() => {
                         this.selectedBird(singleBird.item)
                     }}>
-                    <View>
-                        <Text>{singleBird.item.common_name}</Text>
+                    <View style={styles.listItem}>
+                        <Text style={styles.label}>{singleBird.item.common_name}</Text>
                         <Image 
                             style={{width: 100, height: 100}}
                             source={{uri: typeof singleBird.item.pictures != false ? singleBird.item.pictures[0] : ''}} 
                         />
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -48,7 +48,7 @@ class Encyclopedia extends Component {
             )
         }
         return(
-            <ScrollView>
+            <ScrollView style={styles.container}>
                 <FlatList 
                     data={this.props.encyclopedia.birds}
                     renderItem={this.renderBird.bind(this)}
@@ -58,6 +58,21 @@ class Encyclopedia extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#F5FCFF',
+    },
+    label: {
+        fontSize: 15,
+        marginBottom: 5,
+        marginTop: 10,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        alignSelf: 'flex-start'
+    },
+
+});
 
 function mapStateToProps(state) {
     return state;

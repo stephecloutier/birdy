@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList, TouchableWithoutFeedback, Button, ScrollView} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Button, ScrollView, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import Field from '../commons/Field';
@@ -40,18 +40,18 @@ class UserCaptures extends Component {
     renderBird(singleBird) {          
         return (
             <View>
-                <TouchableWithoutFeedback
+                <TouchableOpacity
                     onPress={() => {
                         this.props.capture.selectedBird = singleBird.item
                         this.updateSelectedBird()
                     }}
                 >
-                    <View>
+                    <View style={styles.listItem}>
                         <Text>
                             {singleBird.item.latin_name + ' - ' + singleBird.item.bague}
                     </Text> 
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -68,8 +68,8 @@ class UserCaptures extends Component {
             )
         } else {
             return(
-                <ScrollView>
-                    <Text>
+                <ScrollView  style={styles.container}>
+                    <Text style={styles.title}>
                         Vos captures (cliquez sur un oiseau pour le modifier)
                     </Text>
                     <FlatList 
@@ -84,6 +84,22 @@ class UserCaptures extends Component {
         
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#F5FCFF',
+    },
+    title: {
+        fontSize: 18,
+        marginTop: 8,
+        marginBottom: 5,
+        textAlign: 'center',
+        alignSelf: 'center'
+    },
+    listItem: {
+        marginBottom: 5,
+    },
+});
 
 
 function mapStateToProps(state) {

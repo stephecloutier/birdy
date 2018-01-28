@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, TouchableOpacity, StyleSheet} from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SegmentedControls } from 'react-native-radio-buttons'
 import Field from '../commons/Field';
@@ -55,7 +55,7 @@ class IndividualCapture extends Component {
         // selectedOption={ this.bird.reprise }
         // />
         return(
-            <View>
+            <View style={styles.container}>
                 <Field 
                 label='Numéro de bague'
                 placeholder='123456'
@@ -96,7 +96,7 @@ class IndividualCapture extends Component {
                 }}
                 />
 
-                <Text>Sexe</Text>
+                <Text style={styles.label}>Sexe</Text>
                 <SegmentedControls
                 options={ sexOptions }
                 onSelection={ this.setCaptureSex.bind(this) }
@@ -122,6 +122,34 @@ class IndividualCapture extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'flex-start',
+      backgroundColor: '#F5FCFF',
+    },
+    label: {
+        fontSize: 15,
+        marginBottom: 5,
+        marginTop: 10,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        alignSelf: 'flex-start'
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: 'white',
+        fontWeight: 'bold',
+        padding: 10,
+        alignSelf: 'stretch',
+        fontSize: 20,
+        backgroundColor: '#E4373C',
+        marginTop: 10,
+    },
+  });
+
+
 
 function mapStateToProps(state) {
     return state;

@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Text, FlatList, Image, ScrollView} from 'react-native';
+import {View, Text, FlatList, Image, ScrollView, StyleSheet} from 'react-native';
 
 class Bird extends Component {
     render() {
         const {common_name, description, habitats, family, distribution, latin_name, min_size, max_size, pictures} = this.props.encyclopedia.currentBird
         return (
-            <ScrollView>
-                <View>
-                    <Text>Nom commun</Text>
+            <ScrollView style={styles.container}>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Nom commun</Text>
                     <Text>{common_name}</Text>
                 </View>
-                <View>
-                    <Text>Description</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Description</Text>
                     <Text>{description}</Text>
                 </View>
-                <View>
-                    <Text>Habitat(s)</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Habitat(s)</Text>
                     <FlatList 
                         data={habitats}
                         renderItem={(singleHabitat) => {
@@ -29,23 +29,23 @@ class Bird extends Component {
                         keyExtractor={(habitat, index) => index}
                     />
                 </View>
-                <View>
-                    <Text>Famille</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Famille</Text>
                     <Text>{family}</Text>
                 </View>
-                <View>
-                    <Text>Distribution</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Distribution</Text>
                     <FlatList 
                         data={distribution}
                         renderItem={(singleDistribution) => {
                             return (
                                 <View>
-                                    <Text>Latitude</Text>
+                                    <Text style={styles.subLabel}>Latitude</Text>
                                     <Text>
                                         {singleDistribution.item.lat}
                                     </Text> 
 
-                                    <Text>Longitude</Text>
+                                    <Text style={styles.subLabel}>Longitude</Text>
                                     <Text>
                                         {singleDistribution.item.lng}
                                     </Text> 
@@ -55,20 +55,20 @@ class Bird extends Component {
                         keyExtractor={(distribution, index) => index}
                     />
                 </View>
-                <View>
-                    <Text>Nom latin</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Nom latin</Text>
                     <Text>{latin_name}</Text>
                 </View>
-                <View>
-                    <Text>Taille minimum</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Taille minimum</Text>
                     <Text>{min_size}cm</Text>
                 </View>
-                <View>
-                    <Text>Taille maximum</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Taille maximum</Text>
                     <Text>{max_size}cm</Text>
                 </View>
-                <View>
-                    <Text>Images</Text>
+                <View style={styles.listItem}>
+                    <Text style={styles.label}>Images</Text>
                     <FlatList 
                         data={pictures}
                         renderItem={(singlePicture) => {
@@ -88,6 +88,29 @@ class Bird extends Component {
         )
     }
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#F5FCFF',
+    },
+    label: {
+        fontSize: 15,
+        marginBottom: 3,
+        marginTop: 10,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        alignSelf: 'flex-start'
+    },
+    subLabel: {
+        fontStyle: 'italic'
+    },
+    listItem: {
+        marginTop: 5,
+        marginBottom: 5,
+    }
+
+});
 
 function mapStateToProps(state) {
     return state;

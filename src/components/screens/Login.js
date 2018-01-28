@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Button} from 'react-native';
+import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
 import { NavigationActions } from "react-navigation";
 import { connect } from "react-redux";
 
@@ -20,12 +20,13 @@ class Login extends Component {
     render() {
         return(
             <View style={styles.container}>
-                <LoginForm />
-                <Button
-                    title='Créer un compte'
-                    onPress={this.navigate}
-                >
-                </Button>
+                <LoginForm style={styles.item} />
+                <TouchableOpacity
+                        onPress={this.navigate}>
+                        <Text style={styles.buttonText}>
+                            Créer un compte
+                        </Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -38,6 +39,18 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
+    },
+    item: {
+        alignSelf: 'stretch',
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: 'white',
+        fontWeight: 'bold',
+        padding: 10,
+        alignSelf: 'stretch',
+        fontSize: 20,
+        backgroundColor: '#E4373C'
     },
   });
   

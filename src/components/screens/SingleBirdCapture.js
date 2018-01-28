@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { SegmentedControls } from 'react-native-radio-buttons'
@@ -22,8 +22,8 @@ class SingleBirdCapture extends Component {
             'F'
         ]
         return(
-            <View>
-                <Text>
+            <View style={styles.container}>
+                <Text style={styles.title}>
                     Modification de {this.props.capture.selectedBird.latin_name} avec bague #{this.props.capture.selectedBird.bague}
                 </Text>
 
@@ -72,7 +72,7 @@ class SingleBirdCapture extends Component {
                 }}
                 />
 
-                <Text>Sexe</Text>
+                <Text style={styles.label}>Sexe</Text>
                 <SegmentedControls
                 options={ sexOptions }
                 onSelection={ this.setCaptureSex.bind(this) }
@@ -98,6 +98,27 @@ class SingleBirdCapture extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#F5FCFF',
+    },
+    title: {
+        fontSize: 18,
+        marginTop: 8,
+        marginBottom: 5,
+        textAlign: 'center',
+        alignSelf: 'center'
+    },
+    label: {
+        fontSize: 15,
+        marginBottom: 5,
+        marginTop: 10,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        alignSelf: 'flex-start'
+    },
+
+});
 
 function mapStateToProps(state) {
     return state;

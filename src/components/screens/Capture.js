@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button, FlatList } from 'react-native';
+import {View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import {connect} from 'react-redux';
@@ -48,7 +48,7 @@ class Capture extends Component {
     }
 
     renderBird(singleBird) {
-        return <Text>{singleBird.item.latin_name + ' - ' + singleBird.item.bague}</Text>
+        return <Text style={styles.listItem}>{singleBird.item.latin_name + ' - ' + singleBird.item.bague}</Text>
     }
 
     render() {
@@ -61,29 +61,34 @@ class Capture extends Component {
         ]
         if(this.props.capture && this.props.capture.captureHasStarted) {
             return(
-                <View>
-                    <Text>Capture du {formattedDate} au {this.capture.method}</Text>
-                    <Text>Oiseau(x) capturé(s)</Text>
+                <View style={styles.container}>
+                    <Text style={styles.title}>Capture du {formattedDate} au {this.capture.method}</Text>
+                    <Text style={styles.label}>Oiseau(x) capturé(s)</Text>
                     <FlatList 
                         data={this.props.capture.birds}
                         renderItem={this.renderBird}
                         keyExtractor={(bird, index) => index}
                     />
 
-                    <Button
-                        title='Ajouter un oiseau'
-                        onPress={this.continueCapture.bind(this)} >
-                    </Button>
-                    <Button
-                        title='Terminer la capture'
-                        onPress={this.endCapture.bind(this)} >
-                    </Button>
+                    <TouchableOpacity
+                        onPress={this.continueCapture.bind(this)}>
+                        <Text style={styles.buttonText}>
+                            Ajouter un oiseau
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={this.endCapture.bind(this)}>
+                        <Text style={styles.buttonText}>
+                            Terminer la capture
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             )
         } else {
             return(
-                <View>
-                    <Text>Méthode de capture</Text>
+                <View style={styles.container}>
+                    <Text style={styles.label}>Méthode de capture</Text>
                     <SegmentedControls
                     options={ captureOptions }
                     onSelection={ this.setSelectedCaptureMethod.bind(this) }
@@ -104,10 +109,12 @@ class Capture extends Component {
                         }}
                     />
 
-                    <Button
-                        title='Débuter la capture'
-                        onPress={this.startCapture.bind(this)} >
-                    </Button>
+                    <TouchableOpacity
+                        onPress={this.startCapture.bind(this)}>
+                        <Text style={styles.buttonText}>
+                            Débuter la capture
+                        </Text>
+                    </TouchableOpacity>
 
                     <Error />
                 </View>
@@ -116,6 +123,41 @@ class Capture extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'flex-start',
+      backgroundColor: '#F5FCFF',
+    },
+    label: {
+        fontSize: 15,
+        marginBottom: 5,
+        marginTop: 10,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        alignSelf: 'flex-start'
+    },
+    title: {
+        fontSize: 18,
+        marginTop: 8,
+        marginBottom: 5,
+        textAlign: 'center',
+        alignSelf: 'center'
+    },
+    listItem: {
+        marginBottom: 5,
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: 'white',
+        fontWeight: 'bold',
+        padding: 10,
+        alignSelf: 'stretch',
+        fontSize: 20,
+        backgroundColor: '#E4373C',
+        marginTop: 10,
+    },
+  });
 
 function mapStateToProps(state) {
     return state;
