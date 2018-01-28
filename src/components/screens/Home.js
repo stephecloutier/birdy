@@ -6,13 +6,20 @@ import Header from '../commons/Header';
 
 
 class Home extends Component {
-    navigate = () => {
+    navigateCapture = () => {
         const navigateToCapture = NavigationActions.navigate({
             routeName:'Capture',
-            params:{name:'Capture'}
         })
 
         this.props.navigation.dispatch(navigateToCapture);
+    }
+
+    navigateUserCaptures = () => {
+        const navigateToUserCapture = NavigationActions.navigate({
+            routeName:'UserCaptures',
+        })
+
+        this.props.navigation.dispatch(navigateToUserCapture);
     }
 
     componentWillMount() {
@@ -27,7 +34,11 @@ class Home extends Component {
                 </Text>
                 <Button
                     title='Faire une nouvelle capture'
-                    onPress={this.navigate} >
+                    onPress={this.navigateCapture} >
+                </Button>
+                <Button
+                    title='Voir toutes mes capture'
+                    onPress={this.navigateUserCaptures} >
                 </Button>
             </View>
         )
