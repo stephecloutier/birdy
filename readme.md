@@ -54,7 +54,7 @@ Tout ce setup permet à mon application d'avoir une navigation avant la connexio
 Enfin, j'ai utilisé le middleware redux-thunk afin de pouvoir faire des requête asynchrones dans mes actions
 
 ## Aperçu de la base de données firebase
-![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/root.png)
+![alt text](https://github.com/stephecloutier/birdy/blob/master/apercu_firebase/root.png)
 
 ![alt text](https://github.com/stephecloutier/birdy/apercu_firebase/birds.png)
 
